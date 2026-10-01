@@ -1,0 +1,136 @@
+{
+  "@@locale": "en",
+  "appTitle": "Fixit",
+  "jobsTitle": "Jobs",
+  "newJob": "New job",
+  "newJobTitle": "New job",
+  "emptyJobsTitle": "No repair jobs yet",
+  "emptyJobsBody": "Describe a problem or snap a photo. Fixit answers with a plan you can tick off, not a wall of text.",
+  "statusDiagnosing": "Diagnosing",
+  "statusInProgress": "In progress",
+  "statusDone": "Done",
+  "jobUpdatedAt": "Updated {date}",
+  "@jobUpdatedAt": {
+    "placeholders": {
+      "date": {
+        "type": "DateTime",
+        "format": "MMMd"
+      }
+    }
+  },
+  "jobStepsProgress": "{done}/{total} steps",
+  "@jobStepsProgress": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "deleteJob": "Delete job",
+  "deleteJobConfirmTitle": "Delete this job?",
+  "deleteJobConfirmBody": "Its messages, photos and checklist progress are removed from this device.",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "demoModeBadge": "Demo mode",
+  "demoModeExplainer": "Answers are scripted, so the app works offline with no API key. Pass GEMINI_API_KEY to use Gemini.",
+  "geminiModeBadge": "Gemini",
+  "composerHint": "Describe the problem",
+  "attachPhoto": "Add a photo",
+  "takePhoto": "Take a photo",
+  "chooseFromLibrary": "Choose from library",
+  "removePhoto": "Remove photo",
+  "send": "Send",
+  "thinking": "Working out a plan",
+  "samplesTitle": "Try a sample problem",
+  "sampleLeakyFaucet": "Leaky faucet",
+  "sampleLeakyFaucetPrompt": "My kitchen faucet keeps dripping even when the handle is fully closed.",
+  "sampleTrippedBreaker": "Tripped breaker",
+  "sampleTrippedBreakerPrompt": "The kitchen breaker keeps tripping when the microwave and kettle run together.",
+  "sampleCrackedTile": "Cracked tile",
+  "sampleCrackedTilePrompt": "A bathroom floor tile cracked across the middle and one corner feels loose.",
+  "errorTitle": "That didn't work",
+  "retry": "Try again",
+  "failureOffline": "You appear to be offline. Demo mode still works without a connection.",
+  "failureInvalidKey": "Gemini rejected the API key. Check GEMINI_API_KEY and rebuild.",
+  "failureRateLimited": "Gemini is rate limiting requests. Wait a moment and try again.",
+  "failureBlocked": "The model declined to answer this one. Try describing it differently.",
+  "failureService": "Gemini is unavailable right now. Try again shortly.",
+  "failureStorage": "This job couldn't be saved on the device.",
+  "failureUnknown": "Something unexpected happened.",
+  "userPhotoSemantics": "Photo of the problem",
+  "photoAttachedSemantics": "Photo attached",
+  "likelyCause": "Likely cause",
+  "alsoPossible": "Also possible",
+  "confidenceLabel": "{percent}% confident",
+  "@confidenceLabel": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "difficultyEasy": "Easy",
+  "difficultyModerate": "Moderate",
+  "difficultyHard": "Hard",
+  "difficultyPro": "Pro only",
+  "submitAnswers": "Submit answers",
+  "answered": "Answered",
+  "yes": "Yes",
+  "no": "No",
+  "requiredQuestion": "Required",
+  "checklistProgress": "{done} of {total} done",
+  "@checklistProgress": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "minutesShort": "{minutes} min",
+  "@minutesShort": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "aboutMinutes": "About {minutes} min",
+  "@aboutMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "safety": "Safety",
+  "partsTitle": "Parts and tools",
+  "quantity": "×{qty}",
+  "@quantity": {
+    "placeholders": {
+      "qty": {
+        "type": "int"
+      }
+    }
+  },
+  "estimatedTotal": "Estimated total",
+  "tools": "Tools",
+  "callAPro": "Call a pro",
+  "whyAPro": "Why a pro",
+  "typicalCost": "Typical cost",
+  "addedBySafetyCheck": "Added by Fixit's safety check",
+  "fallbackTitle": "Part of this answer couldn't be shown",
+  "stepDone": "Done",
+  "stepNotDone": "Not done",
+  "untitledJob": "Untitled job",
+  "failurePermission": "Fixit needs access to the camera or photos. You can allow it in Settings.",
+  "assistantLabel": "Fixit",
+  "newJobIntro": "Describe what's wrong, add a photo if it helps, and Fixit answers with something you can tick off.",
+  "selectJobHint": "Pick a job, or start a new one.",
+  "jobDeleted": "Job deleted"
+}

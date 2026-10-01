@@ -1,0 +1,5 @@
+tags:
+  golden:
+    description: >-
+      Pixel comparisons of catalog widgets. Font rendering differs between
+      macOS and Linux, so CI runs these on macOS only.

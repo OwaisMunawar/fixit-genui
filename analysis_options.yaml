@@ -1,0 +1,20 @@
+include: package:very_good_analysis/analysis_options.yaml
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - lib/l10n/gen/**
+  language:
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true
+
+linter:
+  rules:
+    # This is an app, not a published package; doc comments are written where
+    # they explain intent, not on every public member.
+    public_member_api_docs: false
+    # Single-method interfaces are deliberate seams for dependency injection
+    # and test fakes (RepairGenerator, PhotoSource), not missing functions.
+    one_member_abstracts: false
