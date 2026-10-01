@@ -1,0 +1,98 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  FLUTTER_VERSION: 3.44.2
+
+jobs:
+  quality:
+    name: Format, analyze, test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: subosito/flutter-action@v2.23.0
+        with:
+          channel: stable
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+      - run: flutter pub get
+      - name: Generated code is up to date
+        run: |
+          dart run build_runner build --delete-conflicting-outputs
+          flutter gen-l10n
+          git diff --exit-code -- lib
+      - name: Format
+        run: dart format --output=none --set-exit-if-changed .
+      - name: Analyze
+        run: flutter analyze --fatal-infos
+      - name: Unit and widget tests
+        # Goldens are excluded here and run on macOS below.
+        run: flutter test --coverage --exclude-tags golden
+      - name: Coverage gate (domain and genui, 85%)
+        run: dart run tool/coverage_gate.dart coverage/lcov.info 85
+      - uses: actions/upload-artifact@v7.0.1
+        with:
+          name: coverage
+          path: coverage/lcov.info
+
+  goldens:
+    name: Golden tests
+    # Goldens render real Roboto, and glyph rasterisation differs between
+    # platforms. They are recorded on macOS, so they are compared on macOS.
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: subosito/flutter-action@v2.23.0
+        with:
+          channel: stable
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+      - run: flutter pub get
+      - run: flutter test --tags golden
+      - if: failure()
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: golden-failures
+          path: test/goldens/failures/
+
+  ios:
+    name: iOS simulator build
+    needs: quality
+    runs-on: macos-latest
+    env:
+      LANG: en_US.UTF-8
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: subosito/flutter-action@v2.23.0
+        with:
+          channel: stable
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+      - run: flutter pub get
+      - run: flutter build ios --simulator --no-codesign
+
+  android:
+    name: Android debug build
+    needs: quality
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-java@v6.0.1
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: subosito/flutter-action@v2.23.0
+        with:
+          channel: stable
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+      - run: flutter pub get
+      - run: flutter build apk --debug

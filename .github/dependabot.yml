@@ -1,0 +1,24 @@
+version: 2
+updates:
+  - package-ecosystem: pub
+    directory: /
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: build
+    ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
+      # Pre-1.0 and changing quickly. Upgraded by hand against its changelog.
+      - dependency-name: genui
+      - dependency-name: a2ui_core
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: ci
+    ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
