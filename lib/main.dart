@@ -1,3 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:fixit/bootstrap.dart';
+import 'package:flutter/widgets.dart';
 
-void main() => runApp(const MaterialApp(home: Scaffold()));
+Future<void> main() async => runApp(await bootstrap());
