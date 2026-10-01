@@ -38,7 +38,7 @@ dev_dependencies:
   # 4.0 stable needs Dart 3.13; this is the newest build that runs on the
   # Dart 3.12 toolchain alongside drift_dev 2.35. Revisit on the next
   # Flutter stable.
-  freezed: 4.0.0-dev.3
+  freezed: 4.0.2
   integration_test:
     sdk: flutter
   json_serializable: ^6.14.1
