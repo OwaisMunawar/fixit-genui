@@ -11,6 +11,9 @@ updates:
         update-types: ['version-update:semver-major']
       # Pre-1.0 and changing quickly. Upgraded by hand against its changelog.
       - dependency-name: genui
+      # freezed 4.0 stable needs a newer Dart than Flutter 3.44 ships.
+      - dependency-name: freezed
+      - dependency-name: freezed_annotation
       - dependency-name: a2ui_core
 
   - package-ecosystem: github-actions
