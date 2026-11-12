@@ -38,7 +38,7 @@ jobs:
         run: flutter test --coverage --exclude-tags golden
       - name: Coverage gate (domain and genui, 85%)
         run: dart run tool/coverage_gate.dart coverage/lcov.info 85
-      - uses: actions/upload-artifact@v7.0.1
+      - uses: actions/upload-artifact@v7.0.2
         with:
           name: coverage
           path: coverage/lcov.info
@@ -58,7 +58,7 @@ jobs:
       - run: flutter pub get
       - run: flutter test --tags golden
       - if: failure()
-        uses: actions/upload-artifact@v7.0.1
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: golden-failures
           path: test/goldens/failures/
@@ -85,7 +85,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7.0.1
-      - uses: actions/setup-java@v6.0.1
+      - uses: actions/setup-java@v6.2.0
         with:
           distribution: temurin
           java-version: '17'
