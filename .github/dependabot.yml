@@ -17,6 +17,13 @@ updates:
       - dependency-name: a2ui_core
       # Pinned by flutter_localizations in the Flutter SDK.
       - dependency-name: intl
+      # Riverpod 3.5 pulls packages that do not resolve on Flutter 3.44.
+      - dependency-name: flutter_riverpod
+        update-types: ['version-update:semver-minor']
+      - dependency-name: riverpod
+        update-types: ['version-update:semver-minor']
+      - dependency-name: build_runner
+        update-types: ['version-update:semver-minor']
 
   - package-ecosystem: github-actions
     directory: /
